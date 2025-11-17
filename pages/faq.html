@@ -46,7 +46,7 @@
         
         try {
             // const res = await fetch("/data/question.json");
-            const res = await fetch("./data/questions.json", { method: "GET" });
+            const res = await fetch("../data/question.json", { method: "GET" });
             // if (!res.ok) throw new Error("Không tìm thấy JSON");
 
             const jsonData = await res.json();
