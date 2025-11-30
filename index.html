@@ -292,34 +292,20 @@
 
 
 <script>
-  const webhookURL = "https://discord.com/api/webhooks/1438047383698280469/U8RB-3e9O9EaURfiQwkeiL_-IKR9Q2ggUweIl2NrSslQ0bLQxGL9GnIqDaP2QfOpDNRf";
-
-  document.getElementById("questionForm").addEventListener("submit", async (e) => {
+document.getElementById("questionForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = document.getElementById("name").value;
     const question = document.getElementById("question").value;
-    const time = new Date().toLocaleString("vi-VN");
 
-    const payload = {
-        content: 
-            "```ini\n[Câu hỏi mới từ website]```" +
-            // `**Câu hỏi mới từ website:**\n` +
-            `Thời gian:  *${time}*\n` +
-            `Tên:  ***${name}***\n` +
-            `Nội dung:\n` +
-            `  ${question}\n`
-    };
-
-    await fetch(webhookURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    await fetch("http://localhost:3000/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, question })
     });
 
-    alert("Đã gửi câu hỏi thành công! Cảm ơn bạn rất nhiều");
-    e.target.reset();
-  });
+    alert("Đã gửi thành công!");
+});
 </script>
 
 </body>
