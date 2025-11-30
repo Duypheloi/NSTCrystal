@@ -298,7 +298,7 @@ document.getElementById("questionForm").addEventListener("submit", async (e) => 
     const name = document.getElementById("name").value;
     const question = document.getElementById("question").value;
 
-    await fetch("http://localhost:3000/send", {
+    await fetch("https://nstcrystal-github-io.vercel.app/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, question })
